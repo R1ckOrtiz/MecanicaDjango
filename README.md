@@ -1,0 +1,2 @@
+# MecanicaDjango
+ Projeto de cadastro
