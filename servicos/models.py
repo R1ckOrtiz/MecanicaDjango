@@ -2,11 +2,11 @@ from email.policy import default
 from secrets import token_hex, token_urlsafe
 from django.db import models
 from clientes.models import Cliente
-from .choices import ChoicesCategoriaManutencao
+from .choices import ChoicesCategoriaManuntecao
 from datetime import datetime
 
 class CategoriaManutencao(models.Model):
-    titulo = models.CharField(max_length=3, choices=ChoicesCategoriaManutencao.choices)
+    titulo = models.CharField(max_length=3, choices=ChoicesCategoriaManuntecao.choices)
     preco = models.DecimalField(max_digits=8, decimal_places=2)
 
     def __str__(self) -> str:
@@ -35,8 +35,8 @@ class Servico(models.Model):
         return self.titulo
 
     def save(self, *args, **kwargs):
-        if not self.protocole:
-            self.protocole = datetime.now().strftime("%d/%m/%Y-%H:%M:%S-") + token_hex(16)
+        if not self.protocolo:
+            self.protocolo = datetime.now().strftime("%d/%m/%Y-%H:%M:%S-") + token_hex(16)
 
         if not self.identificador:
             self.identificador = token_urlsafe(16)
